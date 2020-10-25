@@ -1,3 +1,4 @@
+require('dotenv').config()
 const Commando = require('discord.js-commando');
 //const config = require('./config.json');
 const config = process.env;

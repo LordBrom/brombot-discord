@@ -1,7 +1,3 @@
-config.json
-
-## Node ignore
-
 # Logs
 logs
 *.log

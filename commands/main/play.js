@@ -1,6 +1,6 @@
 const Commando = require('discord.js-commando');
 const ytdl = require('ytdl-core-discord');
-const ffmpeg = require('ffmpeg');
+const handleError = require("./../../modules/handleError");
 
 let client;
 
@@ -33,10 +33,12 @@ module.exports = class TestCommand extends Commando.Command {
 
 				default:
 					var connection = await message.member.voice.channel.join();
+
+					connection.on('error', handleError);
 					dispatchController[channelID] = await play(connection, args[0]);
 					client.user.setActivity("music");
 					break;
-		}
+			}
 		} else {
 			message.channel.send('You must be in a voice channel');
 		}
@@ -56,8 +58,3 @@ async function play(connection, url) {
 	return dispatcher;
 }
 
-var handleError = function (err, rsp) {
-	errorLog.error("======================")
-	errorLog.error(err, rsp)
-	errorLog.error("======================")
-}

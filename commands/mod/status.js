@@ -14,14 +14,11 @@ module.exports = class TestCommand extends Commando.Command {
 	}
 
 	async run(message, args) {
-		client.user.setStatus('invisible')
-			.then(console.log)
-			.catch(console.error);
-		//client.user.setPresence({
-		//	activity: {
-		//		name: args,
-		//		type: 0
-		//	}
-		//})
+		client.user.setPresence({
+			activity: {
+				name: args,
+				type: 0
+			}
+		})
 	}
 }
