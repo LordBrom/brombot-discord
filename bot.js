@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 const Commando = require('discord.js-commando');
 //const config = require('./config.json');
 const config = process.env;
@@ -7,6 +7,13 @@ const fs = require('fs');
 
 const MongoClient = require('mongodb').MongoClient;
 const MongoDBProvider = require('commando-provider-mongo');
+
+const express = require('express');
+const PORT = process.env.PORT || 5000;
+
+express()
+	.get('/', (req, res) => res.send('BromBot'))
+	.listen(PORT, () => console.log(`Listening on ${PORT}`))
 
 if (!fs.existsSync('./logs')) {
 	fs.mkdirSync('./logs');
