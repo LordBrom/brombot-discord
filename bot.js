@@ -1,5 +1,6 @@
 const Commando = require('discord.js-commando');
-const config = require('./config.json');
+//const config = require('./config.json');
+const config = process.env;
 const path = require('path');
 const fs = require('fs');
 
@@ -13,25 +14,12 @@ if (!fs.existsSync('./logs')) {
 const serverLog = require('logger').createLogger('./logs/log_server.log');
 const handleError = require("./modules/handleError");
 
-var isDev = true;
-
-let token;
-let mongoDbName;
-if (isDev) {
-	token = config.token_dev;
-	mongoDbName = config.mongoDbName_Dev;
-} else {
-	token = config.token;
-	mongoDbName = config.mongoDbName;
-}
-
 const client = new Commando.CommandoClient({
-	owner: config.owner,
-	commandPrefix: config.commandPrefix
+	owner: config.owner
 });
 
 client.setProvider(
-	MongoClient.connect(config.mongoURI).then(client => new MongoDBProvider(client, mongoDbName))
+	MongoClient.connect(config.mongoURI).then(client => new MongoDBProvider(client, config.mongoDbName))
 ).catch(handleError);
 
 client.on('ready', async () => {
@@ -47,4 +35,4 @@ client.on('ready', async () => {
 		.registerCommandsIn(path.join(__dirname, 'commands'));
 }, handleError);
 
-client.login(token);
+client.login(config.token);
