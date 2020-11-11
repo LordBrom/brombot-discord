@@ -37,8 +37,7 @@ client.on('ready', async () => {
 
 	client.registry
 		.registerGroups([
-			['music', 'music commands'],
-			['debug', 'debug commands']
+			['music', 'music commands']
 		])
 		.registerDefaults()
 		.registerCommandsIn(path.join(__dirname, 'commands'));
