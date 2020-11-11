@@ -1,6 +1,5 @@
 require('dotenv').config();
 const Commando = require('discord.js-commando');
-//const config = require('./config.json');
 const config = process.env;
 const path = require('path');
 const fs = require('fs');
@@ -26,6 +25,8 @@ const client = new Commando.CommandoClient({
 	owner: config.owner
 });
 
+client.queueController = {};
+
 client.setProvider(
 	MongoClient.connect(config.mongoURI).then(client => new MongoDBProvider(client, config.mongoDbName))
 ).catch(handleError);
@@ -36,11 +37,17 @@ client.on('ready', async () => {
 
 	client.registry
 		.registerGroups([
-			['main', 'main commands'],
-			['mod', 'moderator commands']
+			['music', 'music commands']
 		])
 		.registerDefaults()
 		.registerCommandsIn(path.join(__dirname, 'commands'));
 }, handleError);
+
+client.on('reconnecting', () => {
+	serverLog.log('Reconnecting!');
+});
+client.on('disconnect', () => {
+	serverLog.log('Disconnect!');
+});
 
 client.login(config.token);
