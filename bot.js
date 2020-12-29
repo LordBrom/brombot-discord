@@ -1,4 +1,5 @@
 require('dotenv').config();
+
 const Commando = require('discord.js-commando');
 const config = process.env;
 const path = require('path');
