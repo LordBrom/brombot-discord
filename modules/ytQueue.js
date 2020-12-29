@@ -57,7 +57,11 @@ module.exports = class ytQueue {
 		let video = queue.pop();
 		if (!video){return;}
 
-		dispatcher = connection.play(await ytdl(video.url), { type: 'opus' });
+		console.log(video.url)
+
+		let stream = await ytdl(video.url, { 'opusEncoded': true, 'filter': 'audioonly' })
+
+		dispatcher = connection.play(stream, { type: 'opus' });
 
 		dispatcher.on('start', () => {
 			console.log('audio is now playing!');

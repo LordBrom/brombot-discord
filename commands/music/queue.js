@@ -1,5 +1,5 @@
 const Commando = require('discord.js-commando');
-const ytdl = require('ytdl-core-discord');
+const ytdl = require('ytdl-core');
 const ytQueue = require('../../modules/ytQueue');
 const ds = require('../../modules/deleteSelf');
 //const handleError = require("../../modules/handleError");
