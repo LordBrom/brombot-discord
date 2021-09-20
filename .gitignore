@@ -70,6 +70,8 @@ web_modules/
 
 # dotenv environment variables file
 .env
+.env.local
+.env.*.local
 .env.test
 
 # parcel-bundler cache (https://parceljs.org/)
@@ -107,6 +109,7 @@ dist
 
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
+.vscode
 
 # yarn v2
 .yarn/cache

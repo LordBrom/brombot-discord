@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv-flow').config();
 
 const Commando = require('discord.js-commando');
 const config = process.env;
@@ -11,6 +11,11 @@ const MongoDBProvider = require('commando-provider-mongo');
 const express = require('express');
 const PORT = process.env.PORT || 5000;
 
+const serverLog = require('logger').createLogger('./logs/log_server.log');
+const handleError = require("./modules/handleError");
+
+// Front end setup
+
 express()
 	.get('/', (req, res) => res.send('BromBot'))
 	.listen(PORT, () => console.log(`Listening on ${PORT}`))
@@ -19,8 +24,7 @@ if (!fs.existsSync('./logs')) {
 	fs.mkdirSync('./logs');
 }
 
-const serverLog = require('logger').createLogger('./logs/log_server.log');
-const handleError = require("./modules/handleError");
+// Bot setup
 
 const client = new Commando.CommandoClient({
 	owner: config.owner
@@ -29,7 +33,10 @@ const client = new Commando.CommandoClient({
 client.queueController = {};
 
 client.setProvider(
-	MongoClient.connect(config.mongoURI).then(client => new MongoDBProvider(client, config.mongoDbName))
+	MongoClient.connect(config.mongoURI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	}).then(client => new MongoDBProvider(client, config.mongoDbName))
 ).catch(handleError);
 
 client.on('ready', async () => {
