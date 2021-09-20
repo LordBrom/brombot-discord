@@ -11,6 +11,9 @@ const MongoDBProvider = require('commando-provider-mongo');
 const express = require('express');
 const PORT = process.env.PORT || 5000;
 
+if (!fs.existsSync('./logs')) {
+	fs.mkdirSync('./logs');
+}
 const serverLog = require('logger').createLogger('./logs/log_server.log');
 const handleError = require("./modules/handleError");
 
