@@ -1,28 +1,19 @@
 {
-	"name": "brombot",
-	"version": "0.1.0",
-	"description": "A chat bot for Discord, for the use of Lordbrom.",
-	"main": "bot.js",
+	"name": "brombot_discord",
+	"version": "1.0.0",
+	"description": "Discord chat bot for the usage of LordBrom",
+	"scripts": {
+		"start": "node bot.ts",
+		"dev": "nodemon bot.ts"
+	},
 	"author": "Nate Mills",
+	"license": "ISC",
 	"dependencies": {
-		"@discordjs/opus": "^0.3.3",
-		"commando-provider-mongo": "^1.3.0",
-		"discord.js": "^12.5.3",
-		"discord.js-commando": "^0.12.3",
-		"dotenv": "^8.6.0",
-		"dotenv-flow": "^3.2.0",
-		"express": "^4.18.2",
-		"ffmpeg-static": "^4.4.0",
-		"logger": "0.0.1",
-		"mongodb": "^3.7.1",
-		"ytdl-core": "^4.11.2",
-		"ytdl-core-discord": "^1.3.1"
+		"@discordjs/voice": "^0.16.0",
+		"discord.js": "^14.9.0",
+		"dotenv": "^16.0.3"
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.20"
-	},
-	"scripts": {
-		"start": "node bot.js",
-		"dev": "nodemon bot.js"
 	}
 }
