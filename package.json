@@ -3,8 +3,8 @@
 	"version": "1.0.0",
 	"description": "Discord chat bot for the usage of LordBrom",
 	"scripts": {
-		"start": "node bot.ts",
-		"dev": "nodemon bot.ts"
+		"start": "node src/bot.ts",
+		"dev": "nodemon src/bot.ts"
 	},
 	"author": "Nate Mills",
 	"license": "ISC",
