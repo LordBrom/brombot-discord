@@ -3,9 +3,6 @@ const config = process.env;
 
 import { Interaction } from 'discord.js';
 import MyClient from './Client';
-//import {
-//	joinVoiceChannel,
-//} from '@discordjs/voice';
 
 const discordToken = config.TOKEN;
 
@@ -13,7 +10,6 @@ const client = new MyClient({ intents: ['GuildVoiceStates', 'GuildMessages', 'Gu
 
 client.on('interactionCreate', async (interaction: Interaction) => {
 	if (!interaction.isCommand()) { return; }
-
 	const { commandName } = interaction;
 
 	const command = client.commands.get(commandName);
