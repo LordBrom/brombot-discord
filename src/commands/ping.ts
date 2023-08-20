@@ -11,6 +11,8 @@ module.exports = {
 		.setDescription('Replies with Pong!'),
 
 	async execute(interaction: any) {
-		await interaction.reply({ content: 'Pong test!', ephemeral: true });
+		const time = new Date();
+		const timeStr = `${time.getHours()}:${time.getMinutes()}:${time.getSeconds()}`
+		await interaction.reply({ content: `Boing-oing, The current time is ${timeStr}`, ephemeral: true });
 	}
 };
