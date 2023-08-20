@@ -20,5 +20,6 @@
 	},
 	"devDependencies": {
 		"nodemon": "^2.0.20"
-	}
+	},
+	"postinstall": "$(yarn bin)/pm2 install typescript"
 }
