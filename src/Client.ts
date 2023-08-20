@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export default class MyClient extends Client {
-	commands: Collection<string, any> // use correct type :)
+	commands: Collection<string, any>;
 	constructor(options: any) {
 		super(options)
 		this.commands = new Collection();
@@ -26,7 +26,6 @@ export default class MyClient extends Client {
 		this.commands.forEach((command) => {
 			guild.commands?.create(command.data)
 		})
-
 	}
 }
 

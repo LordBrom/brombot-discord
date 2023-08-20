@@ -33,13 +33,14 @@ client.on('interactionCreate', async (interaction: Interaction) => {
 
 
 client.on('ready', () => {
-	const guild = client.guilds.cache.get(config?.TEST_GUILD || '');
-	if (guild) {
+
+	client.guilds.cache.each((guild) => {
 		client.registerCommands(guild);
-	}
+		console.log(`Commands Registered: ${guild.id}`);
 
-
+	})
 	console.log("Ready");
+
 });
 
 client.on('error', console.warn);

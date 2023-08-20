@@ -30,8 +30,8 @@ module.exports = {
 		.setDescription('Plays audio from YouTube url.'),
 
 	async execute(interaction: any) {
-		const songUrl = "https://www.youtube.com/watch?v=gOMhN-hfMtY";
-		//const songUrl = interaction.options.getString('song');
+
+		const songUrl = interaction.options.getString('song');
 
 		let connection = getVoiceConnection(interaction.guild.id);
 		if (!connection) {
